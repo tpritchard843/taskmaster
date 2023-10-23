@@ -13,8 +13,9 @@
         <ul class="todos-list" id="todosList">
             <% todos.forEach( el => { %>
                     <li class='todoItem' data-id='<%=el._id%>'>
-                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><input type="checkbox" data-completed='<%=el._id%>'><%= el.todo %></span>
-                        <span class='del'> Delete </span>
+                        <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.todo %></span>
+                        <a href='' class='del btn' id='deleteBtn'>Delete</a>
+                        <a href='' class='mark-complete btn' id='markCompleteBtn'>Mark Complete</a>
                     </li>
             <% }) %>
             </ul>
