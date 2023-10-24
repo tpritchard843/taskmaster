@@ -2,27 +2,24 @@ const deleteBtn = document.querySelectorAll('.del');
 const todoItem = document.querySelectorAll('span.not');
 const todoComplete = document.querySelectorAll('span.completed');
 
-
-Array.from(deleteBtn).forEach((el)=>{
-    el.addEventListener('click', deleteTodo);
+window.addEventListener('click', e => {
+    if (e.target.dataset.delete) {
+        deleteTodo(e.target.dataset.delete);
+    } else if (e.target.dataset.complete) {
+        markComplete(e.target.dataset.complete);
+    } else if (e.target.dataset.undo) {
+        markIncomplete(e.target.dataset.undo);
+    }
 })
 
-Array.from(todoItem).forEach((el)=>{
-    el.addEventListener('click', markComplete);
-})
-
-Array.from(todoComplete).forEach((el)=>{
-    el.addEventListener('click', markIncomplete);
-})
-
-async function deleteTodo(){
-    const todoId = this.parentNode.dataset.id;
+async function deleteTodo(id){
+    console.log(id)
     try{
         const response = await fetch('todos/deleteTodo', {
             method: 'delete',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'todoIdFromJSFile': id
             })
         })
         const data = await response.json();
@@ -33,14 +30,14 @@ async function deleteTodo(){
     }
 }
 
-async function markComplete(){
-    const todoId = this.parentNode.dataset.id;
+async function markComplete(id){
+    console.log(id)
     try{
         const response = await fetch('todos/markComplete', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'todoIdFromJSFile': id
             })
         })
         const data = await response.json();
@@ -51,14 +48,13 @@ async function markComplete(){
     }
 }
 
-async function markIncomplete(){
-    const todoId = this.parentNode.dataset.id;
+async function markIncomplete(id){
     try{
         const response = await fetch('todos/markIncomplete', {
             method: 'put',
             headers: {'Content-type': 'application/json'},
             body: JSON.stringify({
-                'todoIdFromJSFile': todoId
+                'todoIdFromJSFile': id
             })
         })
         const data = await response.json();
