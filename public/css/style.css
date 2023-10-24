@@ -1,22 +1,96 @@
 body {
   font-size: 62.5%;
+  text-align: center;
 }
 
 h1{
-  color: red;
   font-size: 3rem;
 }
 
+form {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+  form input {
+    border-radius: 5px;
+    border: 2px solid #403d39;
+  }
+
+header img {
+  max-width: 1000px;
+}
+
+svg {
+  pointer-events: none;
+}
+
+main.auth-container {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 700px;
+  border-radius: 10px;
+  border: solid 4px #403d39;
+  box-shadow: 5px 5px 5px #403d39;
+}
+  main.auth-container h1 {
+    margin-bottom: 30px;
+  }
+
 #main {
   font-size: 1.5rem;
+  display: flex;
+  margin: 75px 80px 40px 80px;
+  gap: 40px;
 }
-#main #todosList li {
-  list-style: none;
-}
-.completed{
-  text-decoration: line-through;
-  color: gray;
-}
-.not{
-  text-decoration: underline;
-}
+  #main div.list-container {
+    width: 50%;
+    height: 700px;
+    padding: 40px;
+    border: solid 4px #403d39;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #403d39;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+    #main ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+      #main .todos-list li {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+        #main .todos-list li div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+        #main .todos-list button{
+          padding: 0;
+          border: none;
+          background: white;
+        }
+
+  .completed{
+    text-decoration: line-through;
+    color: gray;
+  }
+  .not{
+    text-decoration: underline;
+  }
+
+
+  /* Buttons */
+
+  a.logout-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
